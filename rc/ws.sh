@@ -37,7 +37,7 @@ validation_key           	"#{current_dir}/admincorp-validator.pem"
 chef_server_url          	"https://chefsrv/organizations/admincorp"
 syntax_check_cache_path  	"#{ENV['HOME']}/.chef/syntaxcache"
 cookbook_path            	["#{current_dir}/../cookbooks"]
-data_bag_encrypted_secret	"/etc/chef/data_bag_encrypted_secret"
+encrypted_data_bag_secret	"/etc/chef/encrypted_data_bag_secret"
 EOL
 
 # Populate hosts file for easy testing
