@@ -13,7 +13,7 @@ Once the hosts have been set up:
 
 `vagrant ssh-config <host name>`
 
-where **host name** is an optional paramater and can be either *ws*, *chefsrv* or *node*. Running this command will show the SSH configuration for each host and with this information you can SSH into the guest with other terminal emulators that don't necessarily accept (or have an option for) executable-specific commands such as Vagrant's own SSH command.
+where **host name** is an optional parameter and can be either *ws*, *chefsrv* or *node*. Running this command will show the SSH configuration for each host and with this information you can SSH into the guest with other terminal emulators that don't necessarily accept (or have an option for) executable-specific commands such as Vagrant's own SSH command.
 
 SSH into the host through whatever means you wish, my go-to is:
 
