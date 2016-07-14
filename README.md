@@ -7,13 +7,13 @@ Set up hosts:
 
 `vagrant up <host name>`
 
-where **host name** is an optional parameter and can be either *ws*, *chefsrv* or *node*. It can be useful for debugging purposes to start up an individual host.
+where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. It can be useful for debugging purposes to start up an individual host.
 
 Once the hosts have been set up:
 
 `vagrant ssh-config <host name>`
 
-where **host name** is an optional parameter and can be either *ws*, *chefsrv* or *node*. Running this command will show the SSH configuration for each host and with this information you can SSH into the guest with other terminal emulators that don't necessarily accept (or have an option for) executable-specific commands such as Vagrant's own SSH command.
+where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. Running this command will show the SSH configuration for each host and with this information you can SSH into the guest with other terminal emulators that don't necessarily accept (or have an option for) executable-specific commands such as Vagrant's own SSH command.
 
 SSH into the host through whatever means you wish, my go-to is:
 
@@ -38,13 +38,13 @@ Once you are finished, exit out of the hosts you are working on and run:
 
 `vagrant halt <host name>`
 
-where **host name** is an optional parameter and can be either *ws*, *chefsrv* or *node*. Running this will shut down the machine Vagrant is managing.
+where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. Running this will shut down the machine Vagrant is managing.
 
 If you wish to completely destroy the hosts and all the data:
 
 `vagrant destroy <host name>`
 
-where **host name** is an optional parameter and can be either *ws*, *chefsrv* or *node*.
+where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*.
 
 # Change Log
 All notable changes to this project will be documented in this section. Inspired by [Keep a CHANGELOG](http://keepachangelog.com/).
