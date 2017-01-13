@@ -21,7 +21,7 @@ SSH into the host through whatever means you wish, my go-to is:
 
 where **port** is the port number indicated from the output of the previous command.
 
-Once inside the guest host:
+Once inside the guest host (virtual machine named *ws*) execute:
 
 `cd chef-repo/.chef/`
 
@@ -52,7 +52,13 @@ All notable changes to this project will be documented in this section. Inspired
 ## [Unreleased]
 ### Changed
 - Minimize the number of commands users have to input after Vagrant finishes `up`
-- Add more information to README.md
+- Add more information to README.md (or improve overall)
+
+## [0.0.2] – 2017-01-14
+### Changed
+- Vagrantfile includes Ubuntu 16.04 box instead of deprecated Wheezy box
+- Bash scripts point to newer version of Chef Server and Chef Development Kit
+- Chef Server and workstation run commands no longer reference non-existing .pem file
 
 ## [0.0.1] – 2016-05-28
 ### Added

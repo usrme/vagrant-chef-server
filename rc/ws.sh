@@ -10,7 +10,7 @@ git clone https://github.com/chef/chef-repo.git
 echo ".chef" >> /home/vagrant/chef-repo/.gitignore
 
 # Grab the latest version of Chef Development Kit (DK): https://downloads.chef.io/chef-dk/
-wget https://packages.chef.io/stable/debian/6/chefdk_0.14.25-1_amd64.deb
+wget https://packages.chef.io/files/stable/chefdk/1.1.16/ubuntu/16.04/chefdk_1.1.16-1_amd64.deb
 
 # Install the package
 sudo dpkg -i chefdk_*.deb
@@ -50,7 +50,7 @@ EOL
 
 # Copy over private key and validation key
 sudo sshpass -p "vagrant" scp -o StrictHostKeyChecking=no -q vagrant@chefsrv:/home/vagrant/admin.pem /home/vagrant/chef-repo/.chef/
-sudo sshpass -p "vagrant" scp -o StrictHostKeyChecking=no -q vagrant@chefsrv:/home/vagrant/admin-validator.pem /home/vagrant/chef-repo/.chef/
+sudo sshpass -p "vagrant" scp -o StrictHostKeyChecking=no -q vagrant@chefsrv:/home/vagrant/user-admin-validator.pem /home/vagrant/chef-repo/.chef/
 
 # Change ownership of the chef-repo directory from "root" to "vagrant"
 sudo chown -R vagrant:vagrant /home/vagrant/chef-repo/
