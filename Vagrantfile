@@ -29,16 +29,16 @@ Vagrant.configure("2") do |config|
 		ws_config.vm.provision :shell, path: "rc/ws.sh"
 	end
 
-	# Create Debian node
-	config.vm.define :node do |node_config|
-		node_config.vm.box = "puphpet/ubuntu1604-x64"
-		node_config.vm.hostname = "node"
-		node_config.vm.network :private_network, ip: "10.0.15.12"
-		node_config.vm.network "forwarded_port", guest: 80, host: 8081
-		node_config.vm.provider "virtualbox" do |vb|
+	# Create Ubuntu node
+	config.vm.define :test do |test_config|
+		test_config.vm.box = "puphpet/ubuntu1604-x64"
+		test_config.vm.hostname = "test"
+		test_config.vm.network :private_network, ip: "10.0.15.12"
+		test_config.vm.network "forwarded_port", guest: 80, host: 8081
+		test_config.vm.provider "virtualbox" do |vb|
 			vb.memory = "512"
 		end
-		node_config.vm.provision :shell, path: "rc/node.sh"
+		test_config.vm.provision :shell, path: "rc/test.sh"
 	end
 	
 end

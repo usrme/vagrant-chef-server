@@ -8,5 +8,5 @@ cat >> /etc/hosts <<EOL
 # Vagrant environment nodes
 10.0.15.10  chefsrv
 10.0.15.11  ws
-10.0.15.12  node
+10.0.15.12  test
 EOL

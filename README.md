@@ -2,57 +2,58 @@
 I created this Vagrantfile and the necessary Bash scripts because I wanted to test and play around with Chef and Chef Server, but I couldn't find any ready-made resources for that, so I made my own. The Bash scripts aren't the most elegant, but I have found it can get me up and running fairly quickly considering the alternatives of manually running everything.
 
 # Usage instructions
-## Setting everything up
-Set up hosts:
+## Setting up the VMs
 
-`vagrant up <host name>`
+You can set up all the VMs in one go by executing:
 
-where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. It can be useful for debugging purposes to start up an individual host.
+`vagrant up`
 
-Once the hosts have been set up:
+This will create the VMs in the order they are defined in the Vagrantfile, namely *ws*, *chefsrv*, and *test*. If you want to set them individually, then do so by executing:
 
-`vagrant ssh-config <host name>`
+`vagrant up [VM name]`
 
-where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. Running this command will show the SSH configuration for each host and with this information you can SSH into the guest with other terminal emulators that don't necessarily accept (or have an option for) executable-specific commands such as Vagrant's own SSH command.
+where **VM name** is an optional argument and can be either *ws*, *chefsrv* or *test*. It can be useful for debugging purposes to start up an individual VM, but for things to properly work *chefsrv* needs to be created before *ws* as the run scripts for *ws* depend on the Chef Server virtual machine being active and set up.
 
-SSH into the host through whatever means you wish, my go-to is:
+Once the VMs have been set up you can access them either via a regular `ssh` command or through `vagrant ssh <VM name>`. The regular `ssh` command requires you to know which ports the VMs are listening on; executing the following will show you that information:
 
-`ssh vagrant@127.0.0.1 -p <port>`
+`vagrant ssh-config [VM name]`
 
-where **port** is the port number indicated from the output of the previous command.
+where **VM name** is an optional argument and can be either *ws*, *chefsrv* or *test*.
 
-Once inside the guest host (virtual machine named *ws*) execute:
+If the previous command ran successfully you are ready to bootstrap the node from the *ws* instance:
 
-`cd chef-repo/.chef/`
+`cd chef-repo/`
+`sudo knife bootstrap 10.0.15.12 -N test -x vagrant -P vagrant --sudo --use-sudo-pass`
 
-`sudo knife ssl fetch`
-
-which will navigate you to the correct directory and add the Chef Server's certificate files to a list inside the .chef directory.
-
-If the previous command ran successfully you are ready to bootstrap the node:
-
-`sudo knife bootstrap 10.0.15.12 -N node -x vagrant -P vagrant --sudo --use-sudo-pass`
+You might get an error about a failure to read the private key, so make sure you are inside the **~/chef-repo/** directory!
 
 ## Finishing your work
 Once you are finished, exit out of the hosts you are working on and run:
 
-`vagrant halt <host name>`
+`vagrant halt [VM name]`
 
-where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*. Running this will shut down the machine Vagrant is managing.
+where **VM name** is an optional argument and can be either *ws*, *chefsrv* or *test*. Running this will shut down the machine Vagrant is managing.
 
 If you wish to completely destroy the hosts and all the data:
 
-`vagrant destroy <host name>`
+`vagrant destroy [VM name]`
 
-where **host name** is an optional argument and can be either *ws*, *chefsrv* or *node*.
+where **VM name** is an optional argument and can be either *ws*, *chefsrv* or *test*.
 
 # Change Log
 All notable changes to this project will be documented in this section. Inspired by [Keep a CHANGELOG](http://keepachangelog.com/).
 
 ## [Unreleased]
 ### Changed
-- Minimize the number of commands users have to input after Vagrant finishes `up`
-- Add more information to README.md (or improve overall)
+- TBD
+
+## [0.0.3] – 2017-02-20
+### Changed
+- Reduced the number of commands users have to input after Vagrant finishes `vagrant up`
+- Testing node named from *node* to *test* to minimize confusion with basic `knife` commands where the keyword "node" is prevalent
+
+### Added
+- More information to README.md
 
 ## [0.0.2] – 2017-01-14
 ### Changed

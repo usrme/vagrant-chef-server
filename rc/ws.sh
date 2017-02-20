@@ -32,7 +32,7 @@ log_level                	:info
 log_location             	STDOUT
 node_name                	"admin"
 client_key               	"#{current_dir}/admin.pem"
-validation_client_name   	"admincorp-validator"
+validation_client_name   	"chef-validator"
 validation_key           	"#{current_dir}/admincorp-validator.pem"
 chef_server_url          	"https://chefsrv/organizations/admincorp"
 syntax_check_cache_path  	"#{ENV['HOME']}/.chef/syntaxcache"
@@ -45,7 +45,7 @@ cat >> /etc/hosts <<EOL
 # Vagrant environment nodes
 10.0.15.10  chefsrv
 10.0.15.11  ws
-10.0.15.12  node
+10.0.15.12  test
 EOL
 
 # Copy over private key and validation key
@@ -54,3 +54,6 @@ sudo sshpass -p "vagrant" scp -o StrictHostKeyChecking=no -q vagrant@chefsrv:/ho
 
 # Change ownership of the chef-repo directory from "root" to "vagrant"
 sudo chown -R vagrant:vagrant /home/vagrant/chef-repo/
+
+# Fetch SSL certificates
+cd /home/vagrant/chef-repo/.chef/; knife ssl fetch
