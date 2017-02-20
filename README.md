@@ -23,6 +23,7 @@ where **VM name** is an optional argument and can be either *ws*, *chefsrv* or *
 If the previous command ran successfully you are ready to bootstrap the node from the *ws* instance:
 
 `cd chef-repo/`
+
 `sudo knife bootstrap 10.0.15.12 -N test -x vagrant -P vagrant --sudo --use-sudo-pass`
 
 You might get an error about a failure to read the private key, so make sure you are inside the **~/chef-repo/** directory!
